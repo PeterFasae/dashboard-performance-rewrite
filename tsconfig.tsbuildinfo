@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/api/mockapi.ts","./src/components/panel.tsx","./src/components/perfhud.tsx","./src/legacy/legacydashboard.tsx","./src/legacy/uselegacyfetch.ts","./src/panels/contents.tsx","./src/rewrite/rewrittendashboard.tsx","./src/rewrite/queries.ts"],"version":"5.9.3"}

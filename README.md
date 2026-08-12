@@ -1,7 +1,8 @@
 # Customer dashboard — data-fetching rewrite
 
-A runnable before/after of the change described in my portfolio case study: replacing
-per-panel fetching with a single shared query layer.
+A runnable before/after demonstrating the shape of a real change: replacing per-panel
+fetching with a single shared query layer, which is what a dashboard performance fix at
+BlueBow Group actually involved.
 
 The two modes are the same screen, calling the same API through the same function.
 The only difference is how the data is asked for.

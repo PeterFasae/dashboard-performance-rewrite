@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "A side-by-side demonstration of the data-fetching rewrite that took a customer dashboard from 3.1s to 0.8s median load.",
+  "description": "A standalone demo of per-panel data fetching against a shared query layer, with simulated endpoints and latency and an on-screen request counter.",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

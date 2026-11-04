@@ -1,13 +1,15 @@
 /**
- * A stand-in for the real REST API.
+ * Simulated endpoints. There is no server and no network request: each call
+ * waits a fixed delay and resolves with the invented data below.
  *
- * Latency is deliberate. The original endpoints sat behind a gateway and a
- * couple of joins, and the numbers below are in the range we actually saw:
- * roughly 260-420ms per call, with the customer endpoint the slowest.
+ * The delays are made up. They are only there so that the order of requests
+ * shows up in the timings, and they are fixed so that every run of the demo,
+ * and every test, gets the same numbers. They are not taken from any real
+ * system.
  *
  * Every call goes through `request()`, which is what the instrumentation
- * panel counts. That is the whole point of the demo: the legacy mode and the
- * rewritten mode hit the same API, and the difference is how often.
+ * strip counts. Both modes call the same functions here, so the only thing
+ * that differs between them is how often, and in what order.
  */
 
 export type Metric = { label: string; value: string; delta: number };

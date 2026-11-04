@@ -21,10 +21,13 @@ export const useCustomers = () => useQuery({ queryKey: keys.customers, queryFn: 
 export const useActivity = () => useQuery({ queryKey: keys.activity, queryFn: api.activity });
 
 /**
- * What a write looks like. Refunding an order changes the order list, the
- * headline metrics and the activity feed, so all three are invalidated
- * together. Before the rewrite this was the stale-data bug class: the order
- * list updated and the metrics above it did not.
+ * What happens after a write. Refunding an order would change the order list,
+ * the headline metrics and the activity feed, so all three are invalidated
+ * together and refetch. With per-panel fetching nothing connects those panels,
+ * which is how a list ends up updated while the totals above it are stale.
+ *
+ * The demo sends no write and its data never changes; this shows only the
+ * invalidation and the three refetches it causes.
  */
 export function useInvalidateAfterWrite() {
   const queryClient = useQueryClient();

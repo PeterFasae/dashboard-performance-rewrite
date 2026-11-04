@@ -91,7 +91,7 @@ export function PerfHud({ runKey }: { runKey: string }) {
   return (
     <div className="hud" data-settled={settled}>
       <div className="hud-item">
-        <span className="hud-label">Time to full render</span>
+        <span className="hud-label">Time to last response</span>
         <strong className="hud-value">{(elapsed / 1000).toFixed(2)}s</strong>
       </div>
       <div className="hud-item">

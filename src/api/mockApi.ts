@@ -15,13 +15,27 @@ export type Order = { id: string; customer: string; total: number; status: strin
 export type Customer = { id: string; name: string; plan: string; mrr: number };
 export type ActivityItem = { id: string; who: string; what: string; at: string };
 
-/** Endpoint name -> how long it takes, in ms. */
-const LATENCY: Record<string, number> = {
+/** Endpoint name -> simulated delay, in ms. Exported so the tests derive their timings from it. */
+export const LATENCY: Readonly<Record<string, number>> = {
   '/metrics': 280,
   '/orders': 340,
   '/customers': 420,
   '/activity': 260,
 };
+
+/** One simulated call: which endpoint, and when it started and finished. */
+export type RequestRecord = { endpoint: string; startedAt: number; endedAt?: number };
+
+const log: RequestRecord[] = [];
+
+/** Every call since the last `clearRequestLog()`, in the order they started. */
+export function requestLog(): readonly RequestRecord[] {
+  return log;
+}
+
+export function clearRequestLog() {
+  log.length = 0;
+}
 
 export type ApiStats = { calls: number; inflight: number };
 
@@ -51,6 +65,8 @@ export function resetStats() {
 }
 
 async function request<T>(endpoint: string, payload: T): Promise<T> {
+  const record: RequestRecord = { endpoint, startedAt: performance.now() };
+  log.push(record);
   stats.calls += 1;
   stats.inflight += 1;
   emit();
@@ -58,6 +74,7 @@ async function request<T>(endpoint: string, payload: T): Promise<T> {
     await new Promise((resolve) => setTimeout(resolve, LATENCY[endpoint] ?? 300));
     return payload;
   } finally {
+    record.endedAt = performance.now();
     stats.inflight -= 1;
     emit();
   }

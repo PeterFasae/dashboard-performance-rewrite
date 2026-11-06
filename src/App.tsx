@@ -52,7 +52,7 @@ export default function App() {
         <header className="topbar">
           <div className="brand">
             <span className="brand-mark" aria-hidden="true" />
-            <span>Customer dashboard</span>
+            <span>Customer dashboard · demo</span>
           </div>
 
           <div className="switch" role="group" aria-label="Data-fetching mode">
@@ -109,9 +109,10 @@ export default function App() {
 
         <footer className="foot">
           <p>
-            Latency is simulated in <code>src/api/mockApi.ts</code>. Both modes call the same API through the
-            same function, so the counter above is a like-for-like comparison. Cold reload clears the cache so
-            neither mode starts with an advantage.
+            The endpoints, their latency and all the data are simulated in <code>src/api/mockApi.ts</code>;
+            nothing here comes from a real system. Both modes call the same API through the same function, so the
+            counter above is a like-for-like comparison. Cold reload clears the cache so neither mode starts with
+            an advantage.
           </p>
         </footer>
       </div>

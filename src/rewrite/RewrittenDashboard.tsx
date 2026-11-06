@@ -9,8 +9,11 @@ import { useActivity, useCustomers, useInvalidateAfterWrite, useMetrics, useOrde
  * together rather than one after another. The summary card shares a key with
  * the headline strip, so between them they cost one request.
  *
- * The provider lives above this component and is not remounted on a tab
- * change, so coming back to a tab is served from cache.
+ * This component is not remounted on a tab change, and every query is
+ * declared whichever tab is showing. So both tabs' data is fetched on the
+ * first load, and switching tabs afterwards makes no requests. The trade-off
+ * is that a cold load of Accounts also asks for orders and activity it isn't
+ * showing.
  */
 export function RewrittenDashboard({ tab }: { tab: 'overview' | 'accounts' }) {
   const metrics = useMetrics();

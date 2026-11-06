@@ -14,8 +14,8 @@ import { useLegacyFetch } from './useLegacyFetch';
  * 2. A waterfall. The orders table renders, and only then does its child
  *    mount and ask for the accounts it needs to label each row. The second
  *    request cannot start until the first has finished, so the two latencies
- *    add up rather than overlapping. This is what the network panel showed:
- *    requests queued behind each other rather than running together.
+ *    add up rather than overlapping. The request log in the tests shows the
+ *    second /customers call starting at the moment /orders finishes.
  *
  * Nothing here is cached, so a tab switch unmounts the lot and pays for all
  * of it again.

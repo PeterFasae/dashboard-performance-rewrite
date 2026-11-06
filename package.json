@@ -3,12 +3,13 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "A side-by-side demonstration of the data-fetching rewrite that took a customer dashboard from 3.1s to 0.8s median load.",
+  "description": "A standalone demo of per-panel data fetching against a shared query layer, with simulated endpoints and latency and an on-screen request counter.",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.59.0",
@@ -19,7 +20,9 @@
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.2",
+    "jsdom": "25.0.1",
     "typescript": "^5.6.3",
-    "vite": "^5.4.9"
+    "vite": "^5.4.9",
+    "vitest": "2.1.9"
   }
 }

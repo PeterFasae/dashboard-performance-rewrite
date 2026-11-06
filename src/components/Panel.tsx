@@ -18,9 +18,10 @@ export function Panel({
         {loading && <span className="panel-state">loading</span>}
       </header>
       {/*
-        Legacy showed a centred spinner that collapsed the panel to nothing,
-        so the page jumped as each one landed. The rewrite uses a skeleton
-        shaped like the real content, which keeps the layout still.
+        The before mode shows a centred spinner and the after mode a skeleton
+        shaped like the content. That is a visual difference between the two
+        modes, separate from the fetching: it changes how loading looks, not
+        what is requested or when.
       */}
       {loading ? (mode === 'legacy' ? <Spinner /> : <Skeleton />) : children}
     </section>

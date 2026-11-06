@@ -48,10 +48,11 @@ export function OrdersContent({ data, onRefund }: { data: Order[]; onRefund?: ()
           <tr>
             <td colSpan={4}>
               <button className="write-btn" onClick={onRefund}>
-                Refund the latest order
+                Simulate a refund
               </button>
               <span className="write-hint">
-                Writes invalidate orders, metrics and activity together.
+                Nothing is written. It invalidates orders, metrics and activity, as a real refund would, and
+                all three refetch.
               </span>
             </td>
           </tr>
